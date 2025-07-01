@@ -1,0 +1,14 @@
+/*:root {
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color:  hsl(0, 0%, 25%);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+<img src="./src/images/fib-filters.jpg" className="fib" alt="Fiber filters"/>
+
