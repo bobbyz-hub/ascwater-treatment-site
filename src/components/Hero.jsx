@@ -1,18 +1,6 @@
-/*export default function Hero() {
-    return (
-        <section className="hero">
-          <div className="hero-content">
-            <h2>Clean Water. Healthy Life.</h2>
-            <p>We provide high-quality water purification and treatment services to homes and businesses.</p>
-            <button>Learn More</button>
-          </div>
-        </section>
-
-    )
-}*/
-
 import { Box, Heading, Text, Button } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import { Link as RouterLink } from 'react-router-dom'
 
 // Wrap Chakra Box with motion
 const MotionBox = motion(Box)
@@ -68,6 +56,8 @@ export default function Hero() {
         </Text>
 
         <Button
+          as={RouterLink}
+          to="/services"
           mt={6}
           size="lg"
           colorScheme="blue"

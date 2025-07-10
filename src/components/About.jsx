@@ -1,26 +1,3 @@
-/* export default function About() {
-    return (
-        <section className="about">
-          <h3>Why Choose Us?</h3>
-          <p>With over 8 years of experience, we are committed to providing clean water using modern, sustainable technologies.</p>
-          <div className="about-images">
-            <img src="src/Images/borehole.jpg" alt="clean borehole water" />
-            <img src="src/Images/clean-water.jpg" alt="clean final water" />
-          </div>
-          <section className="why-clean-water">
-            <h2>Why Clean Water Matters</h2>
-            <ul>
-                <li>💧 Clean water protects your family from harmful contaminants and bacteria.</li>
-                <li>🍴 Better water means safer cooking, cleaner dishes, and tastier drinks.</li>
-                <li>🚿 Softer water is gentler on skin, hair, and clothing.</li>
-                <li>🔧 Prevents damage to plumbing, appliances, and fixtures caused by hard water.</li>
-                <li>🏡 Clean water adds value to your home and peace of mind to your life.</li>
-            </ul>
-          </section>
-        </section>
-    )
-} */
-
 import {
   Box,
   Heading,
@@ -98,6 +75,9 @@ export default function About() {
           <ListItem>🔧 Prevents plumbing and appliance damage.</ListItem>
           <ListItem>🏡 Adds value and peace of mind to your home.</ListItem>
         </UnorderedList>
+        <Text  mt={10} mb={8} px={4} fontSize="2xl" color="#0077cc">
+          Follow us on IG and TikTok
+        </Text>
       </Box>
     </MotionBox>
   )

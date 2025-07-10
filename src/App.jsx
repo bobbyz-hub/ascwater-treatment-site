@@ -1,5 +1,6 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
+import Home from './components/Home'
 import Services from './components/Services'
 import About from './components/About'
 import Footer from './components/Footer'
@@ -13,17 +14,21 @@ import './App.css'
 function App() {
 
   return (
-    <Box bg="#1a202c" color="white" minH="100vh">
-      <Header />
-      <div className='main-page'>
-        <Hero />
-        <Services />
-        <About />
-        <Contact />
-        <Footer />
-      </div>
-      <BackToTop />
-    </Box>
+    <BrowserRouter>
+      <Box bg="#1a202c" color="white" minH="100vh">
+        <Header />
+        <div className='main-page'>
+          <Routes>
+             <Route path="/" element={<Home />} />
+             <Route path="/about" element={<About />} />
+             <Route path="/services" element={<Services />} />
+             <Route path="/contact" element={<Contact />} />
+          </Routes>
+          <Footer />
+        </div>
+        <BackToTop />
+      </Box>
+    </BrowserRouter>
   )
 }
 

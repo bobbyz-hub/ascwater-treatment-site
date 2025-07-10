@@ -1,21 +1,3 @@
-/*export default function Header() {
-    return (
-        <header>
-        <h1>💧 ASC Water Treatment</h1>
-        <nav>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
-    )
-}
-bg="blue.600" "#242424"
-*/
-
 import {
   Box,
   Flex,
@@ -27,20 +9,28 @@ import {
   Heading,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { NavLink as RouterNavLink } from 'react-router-dom'
 
-const Links = ['Home', 'Services', 'About', 'Contact']
+const Links = [
+{ name: 'Home', path: '/' },
+{ name: 'Services', path: '/services' },
+{ name: 'About', path: '/about' },
+{ name: 'Contact', path: '/contact' }
+]
 
-const NavLink = ({ children }) => (
+const NavLink = ({ name, path }) => (
   <Link
+    as={RouterNavLink}
+    to={path}
     px={3}
     py={2}
-    rounded={'md'}
+    rounded="md"
     _hover={{ textDecoration: 'none', bg: 'blue.600' }}
-    href={'#'}
+    _activeLink={{ bg: 'blue.700' }}
     color="white"
     fontWeight="medium"
   >
-    {children}
+    {name}
   </Link>
 )
 
@@ -66,9 +56,13 @@ export default function Header() {
         />
 
         {/* Desktop nav */}
-        <HStack as={'nav'} spacing={6} display={{ base: 'none', md: 'flex' }}>
+        <HStack as="nav" spacing={6} display={{ base: 'none', md: 'flex' }}>
           {Links.map((link) => (
-            <NavLink key={link}>{link}</NavLink>
+            <NavLink 
+              key={link.name}
+              name={link.name}
+              path={link.path} 
+            />
           ))}
         </HStack>
       </Flex>
@@ -76,9 +70,13 @@ export default function Header() {
       {/* Mobile nav */}
       {isOpen && (
         <Box pb={4} display={{ md: 'none' }}>
-          <Stack as={'nav'} spacing={4}>
+          <Stack as="nav" spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink
+                key={link.name}
+                name={link.name}
+                path={link.path} 
+            />
             ))}
           </Stack>
         </Box>

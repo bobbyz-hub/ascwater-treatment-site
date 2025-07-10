@@ -5,7 +5,6 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Text,
   Textarea,
   Button,
   useToast
@@ -59,11 +58,6 @@ export default function Contact() {
       <Heading as="h2" mb={6} color="#0077cc" size="lg" textAlign="center">
         Contact Us
       </Heading>
-      <Text fontSize="md" color="gray.300" textAlign="center" mb={8}>
-        Fill in the form below to contact us and we will respond to your request within two business days or less. 
-        ASC Water Treatment recognizes your right to privacy and protection of the information you provide us.
-      </Text>
-
 
       <FormControl isRequired mb={4}>
         <FormLabel color="white">Name</FormLabel>
