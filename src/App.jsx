@@ -5,6 +5,7 @@ import Services from './components/Services'
 import About from './components/About'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
+import Products from './components/Products'
 import BackToTop from './components/BackToTop'
 import { Box } from '@chakra-ui/react'
 
@@ -23,6 +24,7 @@ function App() {
              <Route path="/about" element={<About />} />
              <Route path="/services" element={<Services />} />
              <Route path="/contact" element={<Contact />} />
+             <Route path="/products" element={<Products />} />
           </Routes>
           <Footer />
         </div>

@@ -56,7 +56,10 @@ export default function Contact() {
       my="2rem"
       boxShadow="md"
     >
-      <Heading as="h2" mb={6} color="#0077cc" size="lg" textAlign="center">
+      <Heading 
+      as="h2" mb={6} fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+      color="#00aaff"
+      textShadow="0 2px 4px rgba(0,0,0,0.3)" textAlign="center">
         Contact Us
       </Heading>
       <Text fontSize="md" color="gray.300" textAlign="center" mb={8}>

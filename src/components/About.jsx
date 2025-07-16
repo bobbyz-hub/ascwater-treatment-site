@@ -28,7 +28,12 @@ export default function About() {
       color="white"
     >
       <VStack spacing={6} textAlign="center">
-        <Heading color="#0077cc">Why Choose Us?</Heading>
+        <Heading 
+        fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+        color="#00aaff"
+        textShadow="0 2px 4px rgba(0,0,0,0.3)">
+          Why Choose Us?
+        </Heading>
         <Text fontSize="lg">
           With over 8 years of experience, we are committed to providing clean
           water using modern, sustainable technologies.
@@ -58,7 +63,9 @@ export default function About() {
       </VStack>
 
       <Box mt={10} textAlign="center" px={4}>
-        <Heading mb={4} fontSize="2xl" color="#0077cc">
+        <Heading mb={4} fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+        color="#00aaff"
+        textShadow="0 2px 4px rgba(0,0,0,0.3)">
           Why Clean Water Matters
         </Heading>
         <UnorderedList

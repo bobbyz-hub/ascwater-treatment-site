@@ -27,7 +27,10 @@ export default function Services() {
       my={8}
     >
       {/* Section Heading */}
-      <Heading textAlign="center" color="#0077cc" mb={6}>
+      <Heading 
+        fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+        color="#00aaff"
+        textShadow="0 2px 4px rgba(0,0,0,0.3)" textAlign="center" mb={6}>
         Our Services
       </Heading>
 
@@ -97,7 +100,10 @@ export default function Services() {
 
       {/* 🔥 Applications Section */}
       <Box mt={12} mb={12}>
-        <Heading size="lg" color="#00aaff" mb={4} textAlign="center">
+        <Heading 
+         fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+         color="#00aaff"
+         textShadow="0 2px 4px rgba(0,0,0,0.3)" mb={4} textAlign="center">
           Applications of Our Water Treatment Machines
         </Heading>
 

@@ -14,6 +14,7 @@ import { NavLink as RouterNavLink } from 'react-router-dom'
 const Links = [
 { name: 'Home', path: '/' },
 { name: 'Services', path: '/services' },
+{ name: 'Products', path: '/products' },
 { name: 'About', path: '/about' },
 { name: 'Contact', path: '/contact' }
 ]
@@ -38,9 +39,9 @@ export default function Header() {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (
-    <Box bg="#242424" px={6} py={3} shadow="md" position="sticky" top="0" zIndex="999">
+    <Box bg="#517891" px={6} py={3} shadow="md" position="sticky" top="0" zIndex="999">
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <Heading size="md" color="#00aaff">
+        <Heading textShadow="0 2px 4px rgba(0,0,0,0.3)" size="md" color="#00aaff">
           💧 ASC Water Treatment
         </Heading>
 
