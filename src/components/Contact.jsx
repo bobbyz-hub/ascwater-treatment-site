@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import {
   Box,
   Heading,
@@ -8,41 +8,77 @@ import {
   Text,
   Textarea,
   Button,
-  useToast
-} from '@chakra-ui/react'
+  useToast,
+} from '@chakra-ui/react';
+import { db } from '../firebase'; // make sure your firebase.js is configured correctly
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function Contact() {
-  const toast = useToast()
+  const toast = useToast();
 
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    message: ''
-  })
+    message: '',
+  });
 
-  function handleChange(e) {
-    const { name, value } = e.target
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }))
-  }
+    }));
+  };
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    toast({
-      title: 'Message sent!',
-      description: "Thank you for contacting us.",
-      status: 'success',
-      duration: 3000,
-      isClosable: true,
-    })
+    try {
+      // 1. Save to Firebase
+      await addDoc(collection(db, 'contactMessages'), {
+        ...formData,
+        createdAt: serverTimestamp()
+      });
 
-    // You can reset the form or send data to a server here
-  }
+      // 2. Send to Formspree
+      await fetch('https://formspree.io/f/mgvznjke', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      toast({
+        title: 'Message sent!',
+        description: "Thank you for contacting us.",
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+
+    } catch (error) {
+      toast({
+        title: 'Error sending message',
+        description: error.message,
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <Box
@@ -57,16 +93,18 @@ export default function Contact() {
       boxShadow="md"
     >
       <Heading 
-      as="h2" mb={6} fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
-      color="#00aaff"
-      textShadow="0 2px 4px rgba(0,0,0,0.3)" textAlign="center">
+        as="h2" mb={6} fontSize={{ base: "2xl", md: "4xl", lg: "5xl" }}
+        color="#00aaff"
+        textShadow="0 2px 4px rgba(0,0,0,0.3)" 
+        textAlign="center"
+      >
         Contact Us
       </Heading>
-      <Text fontSize="md" color="gray.300" textAlign="center" mb={8}>
+
+      <Text fontSize="md" color="white" textAlign="center" mb={8}>
         Fill in the form below to contact us and we will respond to your request within two business days or less. 
         ASC Water Treatment recognizes your right to privacy and protection of the information you provide us.
       </Text>
-
 
       <FormControl isRequired mb={4}>
         <FormLabel color="white">Name</FormLabel>
@@ -76,6 +114,7 @@ export default function Contact() {
           value={formData.name}
           onChange={handleChange}
           bg="white"
+          color="black"
         />
       </FormControl>
 
@@ -87,6 +126,7 @@ export default function Contact() {
           value={formData.email}
           onChange={handleChange}
           bg="white"
+          color="black"
         />
       </FormControl>
 
@@ -99,6 +139,7 @@ export default function Contact() {
           onChange={handleChange}
           placeholder="e.g. +234 805 678 900"
           bg="white"
+          color="black"
         />
       </FormControl>
 
@@ -110,6 +151,7 @@ export default function Contact() {
           onChange={handleChange}
           rows={4}
           bg="white"
+          color="black"
         />
       </FormControl>
 
@@ -118,9 +160,11 @@ export default function Contact() {
         colorScheme="blue"
         width="full"
         fontWeight="bold"
+        isLoading={loading}
+        loadingText="Sending..."
       >
         Send
       </Button>
     </Box>
-  )
+  );
 }
